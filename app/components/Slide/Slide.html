@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/x-icon;base64,">
+<title>Application Title</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Wellkom | Be Well - Perform Well - Live Well Longer</title>   
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app/styles/newcss.css">
+<link rel="stylesheet" href="app/styles/bootstrap.min.css">
+<link rel="stylesheet" href="app/styles/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app/styles/fontAwesome.css">
+<link rel="stylesheet" href="app/styles/light-box.css">
+<link rel="stylesheet" href="app/styles/owl-carousel.css">
+<link rel="stylesheet" href="app/styles/templatemo-style.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+<script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+<script src="app/scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<div class="slider">
+            <div class="Modern-Slider content-section" id="top">
+                <!-- Item -->
+                <div class="item item-1">
+                    <div class="img-fill">
+                    <div class="image"></div>
+                    <div class="info">
+                        <div>
+                          <h1>Be Well - Perform Well - Live Well Longer <span>™</span></h1>
+                          <p>Personalised Health & Wellness</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // Item -->
+                <!-- Item -->
+                <div class="item item-2">
+                    <div class="img-fill">
+                        <div class="image"></div>
+                        <div class="info">
+                        <div>
+                          <h1>Be Well - Perform Well - Live Well Longer <span>™</span></h1>
+                          <p>Personalised Health & Wellness</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // Item -->
+                <!-- Item -->
+                <div class="item item-3">
+                    <div class="img-fill">
+                        <div class="image"></div>
+                        <div class="info">
+                        <div>
+                          <h1>Be Well - Perform Well - Live Well Longer <span>™</span></h1>
+                          <p>Personalised Health & Wellness</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // Item -->
+            </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="app/scripts/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="app/scripts/vendor/bootstrap.min.js"></script>
+    
+    <script src="app/scripts/plugins.js"></script>
+    <script src="app/scripts/main.js"></script>
+
+    <script>
+        // Hide Header on on scroll down
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('header').outerHeight();
+
+        $(window).scroll(function(event){
+            didScroll = true;
+        });
+
+        setInterval(function() {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+            
+            // Make sure they scroll more than delta
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+            
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight){
+                // Scroll Down
+                $('header').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if(st + $(window).height() < $(document).height()) {
+                    $('header').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+            
+            lastScrollTop = st;
+        }
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+	<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>

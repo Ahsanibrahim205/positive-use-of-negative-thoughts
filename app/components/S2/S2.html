@@ -1,0 +1,139 @@
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/x-icon;base64,">
+<title>Application Title</title>
+<link rel="stylesheet" href="app/styles/app-style.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Wellkom | Be Well - Perform Well - Live Well Longer</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app/styles/newcss.css">
+<link rel="stylesheet" href="app/styles/bootstrap.min.css">
+<link rel="stylesheet" href="app/styles/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app/styles/fontAwesome.css">
+<link rel="stylesheet" href="app/styles/light-box.css">
+<link rel="stylesheet" href="app/styles/owl-carousel.css">
+<link rel="stylesheet" href="app/styles/templatemo-style.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+<script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<div class="page-content">
+<section id="projects" class="content-section">
+                <div class="section-heading">
+                    <h1>What is Positive use of <em>Negative thoughts?</em></h1>
+                </div>
+                <div class="section-content">
+                    <div class="masonry">
+                        <div class="row">
+                            <ul>
+                        	<div class="fl-right">
+                              <img src="app/styles/images/positive-use-of-negative-thoughts.jpg" width="153" height="104" alt="positive self talk">
+                            </div>                        
+                            	<li> Research shows that if you just try to tell yourself to stop thinking negative thoughts they will probably show themselves more intensely and more frequently. How strange! </li>
+                                <li> For example if you tell yourself:
+                                <ol><li>I dare not, I must not serve badly this morning as my opponent has a great return and he will clobber me”, this actually increases the chances that you will serve less well than normal.</li>
+                                <li> “I had better not make a mistake when presenting these facts and figures as my boss will be in the meeting”; there will be an increased probability that you will make a mistake.</li>
+<li> “Under no circumstances should I be tense. I must relax”; this leads to an increased likelihood that you will become tenser.
+</li></ol></li>
+                                <li>Similarly, by trying to conceal or bottle up or fight emotions such as fear, anger, frustration and helplessness, you are more likely to dwell upon 
+them and intensify the feelings. </li>
+                                <li> Remember and accept that it is actually all right to experience and let out 
+some negative emotions in a positive, controlled manner. Frequently just naming the feelings can reduce their impact.
+</li>
+ <p>List here any negative thoughts which you quite ommonly: <button  style="background-color: transparent;border:none;" id="b2"><i class="fa fa-microphone" aria-hidden="true"></i></button></p>
+<div id="c2" style="display:none">
+    <table  width="100%">
+      <tr>
+        <td><input id="subscriptionKey" type="hidden" type="text" size="40" value="bea8ac191ce041ecbcabc85e062630f5"></td>
+      </tr>
+      <tr>
+        <td><input type="hidden" id="serviceRegion" type="text" size="40" value="westeurope"></td>
+      </tr>
+    
+
+    </table>
+  </div>
+                            <form>
+                              <textarea  id="t2" name="text" cols="100" rows="10" class="form-control"></textarea>
+                            </form>
+                            </ul>
+                        </div>
+                    </div>
+                </div>  
+                               
+            </section>
+</div>
+<script>
+
+    // status fields and start button in UI
+    var t2;
+    var b2;
+
+    // subscription key and region for speech services.
+    var subscriptionKey, serviceRegion, languageTargetOptions, languageSourceOptions;
+    var SpeechSDK;
+    var recognizerone;
+
+      b2 = document.getElementById("b2");
+      subscriptionKey = document.getElementById("subscriptionKey");
+      serviceRegion = document.getElementById("serviceRegion");
+      t2 = document.getElementById("t2");
+
+
+      
+       b2.addEventListener("click", function () {
+        b2.disabled = true;
+        b2.style.color="red";
+        t2.innerHTML = "";
+
+        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+          alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+          b2.disabled = false;
+          return;
+        }
+        var speechConfig = SpeechSDK.SpeechTranslationConfig.fromSubscription(subscriptionKey.value, serviceRegion.value);
+
+        speechConfig.speechRecognitionLanguage = "en-US";
+        let language = "en"
+        speechConfig.addTargetLanguage(language)
+
+        var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+        recognizerone = new SpeechSDK.TranslationRecognizer(speechConfig, audioConfig);
+
+        recognizerone.recognizeOnceAsync(
+          function (result) {
+            b2.disabled = false;
+            b2.style.color="black";
+            let translation = result.translations.get(language);
+            window.console.log(translation);
+            t2.innerHTML += translation;
+
+            recognizerone.close();
+            recognizerone = undefined;
+          },
+          function (err) {
+            b2.disabled = false;
+            b2.style.color="black";
+            t2.innerHTML += err;
+            window.console.log(err);
+
+            recognizerone.close();
+            recognizerone = undefined;
+          });
+      });
+
+     
+
+      if (!!window.SpeechSDK) {
+        SpeechSDK = window.SpeechSDK;
+        b2.disabled=false;
+        b2.style.color="black";
+        document.getElementById('c2').style.display = 'block';
+        document.getElementById('warning').style.display = 'none';
+      }
+
+  </script>

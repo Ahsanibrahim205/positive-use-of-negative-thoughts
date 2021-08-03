@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:image/x-icon;base64,">
+  
+  <title>positive-use-of-negative-thoughts</title>
+
+  <link rel="stylesheet" href="app/styles/app-style.css">
+</head>
+<body>
+
+<x-component src="Header"></x-component>
+<x-component src="Navbar"></x-component>
+<x-component src="Slide"></x-component>
+<x-component src="S1"></x-component>
+<x-component src="S2"></x-component>
+<x-component src="S3"></x-component>
+<x-component src="S4"></x-component>
+<x-component src="S8"></x-component>
+
+  <script src="xlib/jquery/jquery-3.5.1.min.js"         ></script>
+  <script src="xlib/handlebars/handlebars-4.7.6.min.js" ></script>
+  <script src="xlib/spa/spa-bundle.min.js"              ></script>
+
+  <script src="app/scripts/app.js"></script>
+  <script>
+    spa.onReady = function () {
+      spa.$render('home', {target: '#containerHome'});
+    };
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,164 @@
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/x-icon;base64,">
+<title>Application Title</title>
+<link rel="stylesheet" href="app/styles/app-style.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Wellkom | Be Well - Perform Well - Live Well Longer</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app/styles/newcss.css">
+<link rel="stylesheet" href="app/styles/bootstrap.min.css">
+<link rel="stylesheet" href="app/styles/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app/styles/fontAwesome.css">
+<link rel="stylesheet" href="app/styles/light-box.css">
+<link rel="stylesheet" href="app/styles/owl-carousel.css">
+<link rel="stylesheet" href="app/styles/templatemo-style.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+<script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<div class="page-content">
+ <section id="video" class="content-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h1>How to use negave <em>thoughts positively?</em></h1>
+                        </div>
+                        <div class="text-content">
+                            <div class="section-heading">
+                            <ul>
+                               <li>Start by accepting ‘what is’. Then look for ‘what it tells you’. By doing so 
+                            you will be less unreasonably demanding on yourself; more realistic and a 
+                            bit more accepting of your current limitations. This approach can increase 
+                            your potential to perform to your best and learn to move past your 
+                            limitations.</li>
+
+                            <li> Adopt an attitude that accepts this type of negative thought,
+                            <ol>
+                            <li> if you start thinking, “I dare not, I must not serve badly this morning as my opponent has a great return he will clobber me”, </li>
+                            <li> change this to saying to yourself something like:</li>
+                            <li> “It’s OK not to be perfect every time. I accept that I will do some bad serves.’</li>
+                            </ol></li>
+                            <li> At times your thoughts may indicate an excessive and unrealistic drive to be perfect (as a person) and a lack of acceptance of any imperfection. </li>
+                            <li> To be less driven to achieve perfection, it will help if you change your internal language of ‘perfectionism’ and ‘compulsion’. Identify those standards of excellence you can achieve rather than demanding absolute perfection every time, which is unobtainable. “Sometimes good enough is actually good enough!” </li>
+                            <li> Change your thoughts / language from ‘drivers’ such as: 
+                            <br></br>
+                            “I should”, “I must”, “I have to”, “always”, “never”, “every time”
+                            <br></br>
+                            to choices and preferences such as: 
+                            <r></br>
+                            “I would like”, “frequently’’ or “usually”
+                            </li>
+                            <li> So identify when you are being too hard on yourself and choose to ‘back off’
+                            <ol>
+                                <li>do something to relax (perhaps take a deep breath) </li>
+                                <li>acknowledge and accept what you can and cannot do </li>
+                                <li>modify your language to be a bit more kind to yourself</li>
+                                <li>accept yourself as being the person you are.</li>
+                            </ol></li>
+                            <li> The chances that with this shift in attitude, and practice, you will find that 
+                            your ‘inner voice’ will become more accommodating and accepting. You 
+                            will hear the message and find the action. This will lead to an eventual 
+                            reduction in your negative emotions / thoughts and will actually increase 
+                            your ability to perform.</li>
+                            <p>When will you start practicing? > Date: <button  style="background-color: transparent;border:none;" id="b1"><i class="fa fa-microphone" aria-hidden="true"></i></button></h3>
+                   
+                            <div id="c1">
+    <table  width="100%">
+      <tr>
+        <td><input id="subscriptionKey" type="hidden" type="text" size="40" value="bea8ac191ce041ecbcabc85e062630f5"></td>
+      </tr>
+      <tr>
+        <td><input type="hidden" id="serviceRegion" type="text" size="40" value="westeurope"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+
+                            <form>
+                                <textarea style="  position:relative;"  id="t1" name="text" cols="100" rows="10" class="form-control"></textarea>
+                                
+
+                            </form>
+      </tr>
+
+    </table>
+  </div>
+
+                            </ul>        
+            </section>
+</div>
+<script>
+
+
+    var t1;
+    var b1;
+
+
+    // subscription key and region for speech services.
+    var subscriptionKey, serviceRegion, languageTargetOptions, languageSourceOptions;
+    var SpeechSDK;
+    var recognizerone;
+
+      b1 = document.getElementById("b1");
+      subscriptionKey = document.getElementById("subscriptionKey");
+      serviceRegion = document.getElementById("serviceRegion");
+      t1 = document.getElementById("t1");
+
+
+      
+      b1.addEventListener("click", function () {
+        b1.disabled = true;
+        b1.style.color="red";
+        t1.innerHTML = "";
+
+        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+          alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+          b1.disabled = false;
+          return;
+        }
+        var speechConfig = SpeechSDK.SpeechTranslationConfig.fromSubscription(subscriptionKey.value, serviceRegion.value);
+
+        speechConfig.speechRecognitionLanguage = "en-US";
+        let language = "en"
+        speechConfig.addTargetLanguage(language)
+
+        var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+        recognizerone = new SpeechSDK.TranslationRecognizer(speechConfig, audioConfig);
+
+        recognizerone.recognizeOnceAsync(
+          function (result) {
+            b1.disabled = false;
+            b1.style.color="black";
+            let translation = result.translations.get(language);
+            window.console.log(translation);
+            t1.innerHTML += translation;
+
+            recognizerone.close();
+            recognizerone = undefined;
+          },
+          function (err) {
+            b1.disabled = false;
+            b1.style.color="black";
+            t1.innerHTML += err;
+            window.console.log(err);
+
+            recognizerone.close();
+            recognizerone = undefined;
+          });
+      });
+      
+
+      if (!!window.SpeechSDK) {
+        SpeechSDK = window.SpeechSDK;
+        b1.disabled=false;
+        b1.style.color="black";
+        document.getElementById('c1').style.display = 'block';
+        document.getElementById('warning').style.display = 'none';
+      }
+
+  </script>

@@ -1,0 +1,34 @@
+html{
+	scroll-behavior: smooth;
+}
+#newspan{
+	text-align: center;
+}
+#tab1{
+	width: 48%;
+	border: 1px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+#tab1 td{
+	
+	border: 1px solid black;
+	text-align: center;
+}
+#td1{
+	width: 10%;
+
+}
+#td2{
+	width: 80%;
+	
+}
+#td2 a{
+	text-decoration: none;
+	color: black;
+}
+#ch8p1{
+	margin-left: auto;
+	margin-right: auto;
+	width: 88%;
+}
